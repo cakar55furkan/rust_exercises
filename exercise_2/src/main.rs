@@ -1,3 +1,5 @@
+use std::io::{self, Read};
+
 fn main() {
     /*
      * Exercises variables types in Rust Book chapter 2
@@ -33,4 +35,25 @@ fn main() {
     println!("{}", int_from_str);
     // let positive_number: u32 = -5;
     // print!("{}", positive_number);
+    //============================================================================================
+    // Compound Types:
+    //
+    let tup: (u32, u8, &str) = (55, 22, "asdf");
+    println!("{}", tup.2); // accessing the elements of the tuple via .2
+    let (x, y, z) = tup;
+    println!("{}", y); // prints 22
+                       // array type:
+                       //
+    let mut index = String::new();
+    io::stdin()
+        .read_line(&mut index)
+        .expect("error at reading the std input.");
+
+    let index: usize = index.trim().parse().expect("error parsing the input");
+
+    let array = [1, 2, 3, 4, 5, 6];
+    println!("{}", array[index]);
+
+    // an array is not flexible as vector.
+    // array index type must be usize, idk why
 }
